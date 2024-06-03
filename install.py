@@ -112,9 +112,9 @@ def install(rType="MAIN"):
 def update(rType="MAIN"):
     if rType == "UPDATE":
         printc("Enter the link of release_xyz.zip file:", col.BRIGHT_RED)
-        rlink = input('Example: https://plusmastv.com.co/XUI/XtreamUI-24A-Mods24/release_22f.zip\n\nNow enter the link:\n\n')
+        rlink = input('Example: https://github.com/PlusmasTV/XtreamUI-24A-Mods24/raw/main/release_22f.zip\n\nNow enter the link:\n\n')
     else:
-        rlink = "https://plusmastv.com.co/XUI/XtreamUI-24A-Mods24/release_22f.zip"
+        rlink = "https://github.com/PlusmasTV/XtreamUI-24A-Mods24/raw/main/release_22f.zip"
         printc("Downloading Software Update")  
     os.system('wget -q -O "/tmp/update.zip" "%s"' % rlink)
     if os.path.exists("/tmp/update.zip"):
