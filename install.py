@@ -6,7 +6,7 @@ from zipfile import ZipFile
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
-rDownloadURL = {"main": "https://plusmastv.com.co/XUI/XtreamUI-24A-Mods24/main_xui_xoceunder.tar.gz", "sub": "https://plusmastv.com.co/XUI/XtreamUI-24A-Mods24/sub_xui_xoceunder.tar.gz"}
+rDownloadURL = {"main": "https://download1528.mediafire.com/jq8a35xfci0gseQdPKQEHCN6YgHnE8KBb__uzl80rRNLr6Yc3Lp8v1c7YzwzCs19mdhcB0DSf78K-b-WNO0N6rmo7tuJkHhyHz3OLJUWKZ8iW-LRqZqOSDCC1Xmnh_dQs7BovxeBCFLjBS4KSKWL4DbO8vb02if26wT7FoGDU82MHw/t24gwyydvcykau8/main_xui_xoceunder.tar.gz", "sub": "https://download1321.mediafire.com/ccsqril2kybgc6gdLRn2I_MtVVDSIRO-BksO3hjukLyQhxvIUBrkdUU7F0xU1yodz7w-tqWOZPfHK1COOAwdiwlfCJR1tg1tHl5WtdQNsxKPc4VHvJ-t_l0g2g0mxZq2lFzuu_x9VmtN6ZLCm-4kBZ2pH0TVpK3CmYM_QCNUh-_CLA/uig9cyn0el1ttl7/sub_xui_xoceunder.tar.gz"}
 rPackages = ["libcurl4", "libxslt1-dev", "libgeoip-dev", "libonig-dev", "e2fsprogs", "wget", "mcrypt", "nscd", "htop", "zip", "unzip", "mc", "mariadb-server", "libpng16-16", "libzip5", "python3-paramiko", "python-is-python3"]
 rInstall = {"MAIN": "main", "LB": "sub"}
 rUpdate = {"UPDATE": "update"}
@@ -75,13 +75,13 @@ def prepare(rType="MAIN"):
         printc("Install MariaDB 10.5 repository")
         os.system("apt-get install -y software-properties-common > /dev/null")
         os.system("apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 >/dev/null 2>&1")
-        os.system("add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mirror.lstn.net/mariadb/repo/10.5/ubuntu focal main'  > /dev/null")
+        os.system("add-apt-repository 'deb [arch=amd64,arm64,ppc64el] ://mirror.lstn.net/mariadb/repo/10.5/ubuntu focal main'  > /dev/null")
         os.system("apt-get update > /dev/null")
     for rPackage in rPackages:
         printc("Installing %s" % rPackage)
         os.system("apt-get install %s -y > /dev/null" % rPackage)
     printc("Installing pip2 and python2 paramiko")
-    os.system("add-apt-repository universe > /dev/null 2>&1 && curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py > /dev/null 2>&1 && python2 get-pip.py > /dev/null 2>&1 && pip2 install paramiko > /dev/null 2>&1")
+    os.system("add-apt-repository universe > /dev/null 2>&1 && curl s://bootstrap.pypa.io/get-pip.py --output get-pip.py > /dev/null 2>&1 && python2 get-pip.py > /dev/null 2>&1 && pip2 install paramiko > /dev/null 2>&1")
     os.system("apt-get install -f > /dev/null") # Clean up above
     try:
         subprocess.check_output("getent passwd xtreamcodes > /dev/null".split())
@@ -112,9 +112,9 @@ def install(rType="MAIN"):
 def update(rType="MAIN"):
     if rType == "UPDATE":
         printc("Enter the link of release_xyz.zip file:", col.BRIGHT_RED)
-        rlink = input('Example: https://github.com/PlusmasTV/XtreamUI-24A-Mods24/raw/main/release_22f.zip\n\nNow enter the link:\n\n')
+        rlink = input('Example: https://download1325.mediafire.com/9e5cau4eevxg3HCwwtCFIgAGdErUxHVeVkyriooCNvQC1xaqOr1xxlDgm_iFXZgPYKdBwGdSNAEYzN1inl2UEqicU2QXts_NK_vlxcSkN0loZQaQi3R8KhipDO0v185nU0E1ZeC8HpTy2aF3ERRSOUKwzehysXMtF58I26K-mnxSkQ/73g9etyy4ozgfcg/release_22f.zip/file\n\nNow enter the link:\n\n')
     else:
-        rlink = "https://github.com/PlusmasTV/XtreamUI-24A-Mods24/raw/main/release_22f.zip"
+        rlink = "https://download1325.mediafire.com/9e5cau4eevxg3HCwwtCFIgAGdErUxHVeVkyriooCNvQC1xaqOr1xxlDgm_iFXZgPYKdBwGdSNAEYzN1inl2UEqicU2QXts_NK_vlxcSkN0loZQaQi3R8KhipDO0v185nU0E1ZeC8HpTy2aF3ERRSOUKwzehysXMtF58I26K-mnxSkQ/73g9etyy4ozgfcg/release_22f.zip"
         printc("Downloading Software Update")  
     os.system('wget -q -O "/tmp/update.zip" "%s"' % rlink)
     if os.path.exists("/tmp/update.zip"):
@@ -217,8 +217,8 @@ def configure():
     except: pass
     if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/tv_archive"): os.mkdir("/home/xtreamcodes/iptv_xtream_codes/tv_archive/")
     os.system("ln -s /home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg /usr/bin/")
-    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb"): os.system("wget -q https://plusmastv.com.co/XUI/XtreamUI-24A-Mods24/GeoLite2.mmdb -O /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb")
-    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php"): os.system("wget -q https://plusmastv.com.co/XUI/XtreamUI-24A-Mods24/pid_monitor.php -O /home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php")
+    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb"): os.system("wget -q https://download1085.mediafire.com/9c1tmpeddtzggemhdyTqEM8iR6BTgdogV980_r38y3aEE8kAdOOiEUjAEUCMpQe89HE_99VivB43PUUyZWA7fh7b3Kzh4fjUL4Nd3vTk7EwaFLnqTfB9DqTGj6RXx2QE7lGI7BK0z7B-nFQh7y9Dj1fGXbPCGoiGiLpY29GsuEpv0A/qjuk1vhkc3v304i/GeoLite2.mmdb -O /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb")
+    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php"): os.system("wget -q https://download1085.mediafire.com/yxiuua6bcgmgbTr06WT-Eg0BZhd03YvcAqGSsMSAceLDmlqD0ysPRng7vTz0jPTNfQl07erX4rJSdgIYsLZ78G2tvZ8CcsFpxGpIarE9I_rrWH9U3fmPUrMjuAzVUitxhvoAibUAHlpEsAH1jKaAQGauW8NqTzLAajiw0s1LbF6mtg/63n3su7zu6gvbpf/pid_monitor.php -O /home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php")
     os.system("chown xtreamcodes:xtreamcodes -R /home/xtreamcodes > /dev/null")
     os.system("chmod -R 0777 /home/xtreamcodes > /dev/null")
     os.system("chattr -ai /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb > /dev/null")
