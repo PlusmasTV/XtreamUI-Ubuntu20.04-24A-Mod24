@@ -6,7 +6,7 @@ from zipfile import ZipFile
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
-rDownloadURL = {"main": "https://bitbucket.org/plusxtream/24a-mods24/raw/c424278ca25cef8bb5b8c8bf5eafc268009664c6/main_xui_xoceunder.tar.gz", "sub": "https://bitbucket.org/plusxtream/24a-mods24/raw/c424278ca25cef8bb5b8c8bf5eafc268009664c6/sub_xui_xoceunder.tar.gz"}
+rDownloadURL = {"main": "http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/main_xui_xoceunder.tar.gz", "sub": "http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/sub_xui_xoceunder.tar.gz"}
 rPackages = ["libcurl4", "libxslt1-dev", "libgeoip-dev", "libonig-dev", "e2fsprogs", "wget", "mcrypt", "nscd", "htop", "zip", "unzip", "mc", "mariadb-server", "libpng16-16", "libzip5", "python3-paramiko", "python-is-python3"]
 rInstall = {"MAIN": "main", "LB": "sub"}
 rUpdate = {"UPDATE": "update"}
@@ -75,13 +75,13 @@ def prepare(rType="MAIN"):
         printc("Install MariaDB 10.5 repository")
         os.system("apt-get install -y software-properties-common > /dev/null")
         os.system("apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 >/dev/null 2>&1")
-        os.system("add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mirror.lstn.net/mariadb/repo/10.5/ubuntu focal main'  > /dev/null")
+        os.system("add-apt-repository 'deb [arch=amd64,arm64,ppc64el] ://mirror.lstn.net/mariadb/repo/10.5/ubuntu focal main'  > /dev/null")
         os.system("apt-get update > /dev/null")
     for rPackage in rPackages:
         printc("Installing %s" % rPackage)
         os.system("apt-get install %s -y > /dev/null" % rPackage)
     printc("Installing pip2 and python2 paramiko")
-    os.system("add-apt-repository universe > /dev/null 2>&1 && curl https://bootstrap.pypa.io/get-pip.py --output get-pip.py > /dev/null 2>&1 && python2 get-pip.py > /dev/null 2>&1 && pip2 install paramiko > /dev/null 2>&1")
+    os.system("add-apt-repository universe > /dev/null 2>&1 && curl s://bootstrap.pypa.io/get-pip.py --output get-pip.py > /dev/null 2>&1 && python2 get-pip.py > /dev/null 2>&1 && pip2 install paramiko > /dev/null 2>&1")
     os.system("apt-get install -f > /dev/null") # Clean up above
     try:
         subprocess.check_output("getent passwd xtreamcodes > /dev/null".split())
@@ -112,9 +112,9 @@ def install(rType="MAIN"):
 def update(rType="MAIN"):
     if rType == "UPDATE":
         printc("Enter the link of release_xyz.zip file:", col.BRIGHT_RED)
-        rlink = input('Example: https://bitbucket.org/plusxtream/24a-mods24/raw/c424278ca25cef8bb5b8c8bf5eafc268009664c6/release_22f.zip\n\nNow enter the link:\n\n')
+        rlink = input('Example: http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/release_22f.zip\n\nNow enter the link:\n\n')
     else:
-        rlink = "https://bitbucket.org/plusxtream/24a-mods24/raw/c424278ca25cef8bb5b8c8bf5eafc268009664c6/release_22f.zip"
+        rlink = "http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/release_22f.zip"
         printc("Downloading Software Update")  
     os.system('wget -q -O "/tmp/update.zip" "%s"' % rlink)
     if os.path.exists("/tmp/update.zip"):
@@ -217,8 +217,8 @@ def configure():
     except: pass
     if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/tv_archive"): os.mkdir("/home/xtreamcodes/iptv_xtream_codes/tv_archive/")
     os.system("ln -s /home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg /usr/bin/")
-    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb"): os.system("wget -q https://bitbucket.org/plusxtream/24a-mods24/raw/c424278ca25cef8bb5b8c8bf5eafc268009664c6/GeoLite2.mmdb -O /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb")
-    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php"): os.system("wget -q https://bitbucket.org/plusxtream/24a-mods24/raw/c424278ca25cef8bb5b8c8bf5eafc268009664c6/pid_monitor.php -O /home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php")
+    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb"): os.system("wget -q http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/GeoLite2.mmdb -O /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb")
+    if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php"): os.system("wget -q http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/pid_monitor.php -O /home/xtreamcodes/iptv_xtream_codes/crons/pid_monitor.php")
     os.system("chown xtreamcodes:xtreamcodes -R /home/xtreamcodes > /dev/null")
     os.system("chmod -R 0777 /home/xtreamcodes > /dev/null")
     os.system("chattr -ai /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb > /dev/null")
