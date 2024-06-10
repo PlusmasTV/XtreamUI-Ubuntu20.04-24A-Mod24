@@ -6,6 +6,6 @@ This is an installation mirror for xtream ui software on Ubuntu 20.04. Includes 
 
 Update your ubuntu first, then install panel:
 ``` 
-sudo apt update && sudo apt full-upgrade -y && sudo apt install python -y && rm -rf install.py && wget https://raw.githubusercontent.com/PlusmasTV/XtreamUI-24A-Mods24/main/install.py && sudo python3 install.py 
+sudo apt update && sudo apt full-upgrade -y && sudo apt install python -y && rm -rf install.py && wget https://raw.githubusercontent.com/PlusmasTV/XtreamUI-Ubuntu20.04-24A-Mod24/main/install.py && sudo python3 install.py 
 
 ```
