@@ -112,9 +112,9 @@ def install(rType="MAIN"):
 def update(rType="MAIN"):
     if rType == "UPDATE":
         printc("Enter the link of release_xyz.zip file:", col.BRIGHT_RED)
-        rlink = input('Example: http://46.175.149.24/xtreamui/ubuntu18.04/XtreamUI-V22F-CK1/release_22f.zip\n\nNow enter the link:\n\n')
+        rlink = input('Example: http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/release_22f.zip\n\nNow enter the link:\n\n')
     else:
-        rlink = "http://46.175.149.24/xtreamui/ubuntu18.04/XtreamUI-V22F-CK1/release_22f.zip"
+        rlink = "http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/release_22f.zip"
         printc("Downloading Software Update")  
     os.system('wget -q -O "/tmp/update.zip" "%s"' % rlink)
     if os.path.exists("/tmp/update.zip"):
