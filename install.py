@@ -6,7 +6,7 @@ from zipfile import ZipFile
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
-rDownloadURL = {"main": "http://46.175.149.24/xtreamui/ubuntu18.04/XtreamUI-V22F-CK41/main_xtreamcodes_reborn.tar.gz", "sub": "http://46.175.149.24/xtreamui/ubuntu18.04/XtreamUI-V22F-CK41/sub_xtreamcodes_reborn.tar.gz"}
+rDownloadURL = {"main": "http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/main_xui_xoceunder.tar.gz", "sub": "http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/sub_xui_xoceunder.tar.gz"}
 rPackages = ["libcurl4", "libxslt1-dev", "libgeoip-dev", "libonig-dev", "e2fsprogs", "wget", "mcrypt", "nscd", "htop", "zip", "unzip", "mc", "mariadb-server", "libpng16-16", "libzip5", "python3-paramiko", "python-is-python3"]
 rInstall = {"MAIN": "main", "LB": "sub"}
 rUpdate = {"UPDATE": "update"}
@@ -112,9 +112,9 @@ def install(rType="MAIN"):
 def update(rType="MAIN"):
     if rType == "UPDATE":
         printc("Enter the link of release_xyz.zip file:", col.BRIGHT_RED)
-        rlink = input('Example: http://46.175.149.24/xtreamui/ubuntu18.04/XtreamUI-V22F-CK41/update.zip\n\nNow enter the link:\n\n')
+        rlink = input('Example: http://46.175.149.24/xtreamui/ubuntu18.04/XtreamUI-V22F-CK1/release_22f.zip\n\nNow enter the link:\n\n')
     else:
-        rlink = "http://46.175.149.24/xtreamui/ubuntu18.04/XtreamUI-V22F-CK41/update.zip"
+        rlink = "http://46.175.149.24/xtreamui/ubuntu18.04/XtreamUI-V22F-CK1/release_22f.zip"
         printc("Downloading Software Update")  
     os.system('wget -q -O "/tmp/update.zip" "%s"' % rlink)
     if os.path.exists("/tmp/update.zip"):
