@@ -75,7 +75,7 @@ def prepare(rType="MAIN"):
         printc("Install MariaDB 10.5 repository")
         os.system("apt-get install -y software-properties-common > /dev/null")
         os.system("apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 >/dev/null 2>&1")
-        os.system("add-apt-repository 'deb http://mirrors.us.kernel.org/ubuntu/ focal main'  > /dev/null")
+        os.system("add-apt-repository 'deb ://mirrors.us.kernel.org/ubuntu/ focal main'  > /dev/null")
         os.system("apt-get update > /dev/null")
     for rPackage in rPackages:
         printc("Installing %s" % rPackage)
@@ -112,9 +112,9 @@ def install(rType="MAIN"):
 def update(rType="MAIN"):
     if rType == "UPDATE":
         printc("Enter the link of release_xyz.zip file:", col.BRIGHT_RED)
-        rlink = input('Example: http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/release_22f.zip\n\nNow enter the link:\n\n')
+        rlink = input('Example: http://46.175.149.24/xtreamui/ubuntu18.04-20.04/XtreamUI-V22F-CK41/update.zip\n\nNow enter the link:\n\n')
     else:
-        rlink = "http://46.175.149.24/xtreamui/ubuntu20.04/XtreamUI-24A-Mods24/release_22f.zip"
+        rlink = "http://46.175.149.24/xtreamui/ubuntu18.04-20.04/XtreamUI-V22F-CK41/update.zip"
         printc("Downloading Software Update")  
     os.system('wget -q -O "/tmp/update.zip" "%s"' % rlink)
     if os.path.exists("/tmp/update.zip"):
